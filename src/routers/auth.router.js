@@ -2,11 +2,7 @@ import { Router } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import db from '../models/index.cjs';
-import {
-  PASSWORD_HASH_SALT_ROUNDS,
-  JWT_ACCESS_TOKEN_SECRET,
-  JWT_ACCESS_TOKEN_EXPIRES_IN,
-} from '../constants/security.costant.js';
+import 'dotenv/config';
 const { Users } = db;
 
 const authRouter = Router();
@@ -76,7 +72,7 @@ authRouter.post('/signup', async (req, res) => {
       });
     }
 
-    const hashedPassword = bcrypt.hashSync(password, PASSWORD_HASH_SALT_ROUNDS);
+    const hashedPassword = bcrypt.hashSync(password, process.env.PASSWORD_HASH_SALT_ROUNDS);
 
     const newUser = (
       await Users.create({ email, password: hashedPassword, name })
@@ -129,8 +125,8 @@ authRouter.post('/signin', async (req, res) => {
       });
     }
 
-    const accessToken = jwt.sign({ userId: user.id }, JWT_ACCESS_TOKEN_SECRET, {
-      expiresIn: JWT_ACCESS_TOKEN_EXPIRES_IN,
+    const accessToken = jwt.sign({ userId: user.id }, process.env.JWT_ACCESS_TOKEN_SECRET, {
+      expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES_IN,
     });
 
     return res.status(200).json({

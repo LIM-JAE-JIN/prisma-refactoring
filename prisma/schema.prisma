@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  userId Int @id @default(autoincrement()) @map("userId")
+  email String @unique @map("email")
+  password String @map("password")
+  name String @unique @map("name")
+
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  Posts Posts[] // 1:N관계
+
+  @@map("Users")
+}
+
+model Posts {
+  postId Int @id @default(autoincrement()) @map("postId")
+  UserId Int @map("UserId")
+  title String @map("title")
+  content String @db.Text @map("content")
+  status String @default("FOR_SALE") @map("status")
+
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  User Users @relation(fields: [UserId], references: [userId], onDelete: Cascade)
+
+  @@map("Posts")
+}
