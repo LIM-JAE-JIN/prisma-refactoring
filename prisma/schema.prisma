@@ -19,12 +19,12 @@ model Users {
   createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @updatedAt @map("updatedAt")
 
-  Posts Posts[] // 1:N관계
+  Products Products[] // 1:N관계
 
   @@map("Users")
 }
 
-model Posts {
+model Products {
   postId Int @id @default(autoincrement()) @map("postId")
   UserId Int @map("UserId")
   title String @map("title")
@@ -36,5 +36,5 @@ model Posts {
 
   User Users @relation(fields: [UserId], references: [userId], onDelete: Cascade)
 
-  @@map("Posts")
+  @@map("Products")
 }
