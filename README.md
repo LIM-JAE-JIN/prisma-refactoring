@@ -74,3 +74,15 @@ https://www.erdcloud.com/d/zzo9JoKE9Z7zfHTwq
 
 - nodemon은 어떤 역할을 하는 패키지이며, 사용했을 때 어떤 점이 달라졌나요?
 - npm을 이용해서 패키지를 설치하는 방법은 크게 일반, 글로벌(`--global, -g`), 개발용(`--save-dev, -D`)으로 3가지가 있습니다. 각각의 차이점을 설명하고, nodemon은 어떤 옵션으로 설치해야 될까요? -->
+
+# 환경변수
+
+- SERVER_PORT: 서버 포트 번호
+- DATABASE_URL: Prisma 사용을 위한 DB URL
+- PASSWORD_HASH_SALT_ROUNDS: 비밀번호 Hash Salt 생성
+- JWT_ACCESS_TOKEN_SECRET: JWT AccessToken 암호키
+
+# 실행 방법
+
+npm install
+npm run dev
