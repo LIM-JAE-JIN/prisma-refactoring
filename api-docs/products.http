@@ -9,7 +9,7 @@ Authorization: Bearer {{accessToken}}
 
 {
    "title": "킨더조이",
-   "description": "장난감이 들어 있는 초콜렛"
+   "content": "장난감이 들어 있는 초콜렛"
 }
 
 ### 상품 목록 조회
