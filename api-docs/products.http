@@ -25,7 +25,7 @@ Authorization: Bearer {{accessToken}}
 
 {
    "title": "페레로로쉐",
-   "description": "중독성 쩌는 초콜렛",
+   "content": "중독성 쩌는 초콜렛",
    "status": "SOLD_OUT"
 }
 

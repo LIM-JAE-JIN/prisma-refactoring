@@ -7,6 +7,7 @@ export class AuthService {
     this.usersRepository = usersRepository;
   }
 
+  // 회원가입
   createUser = async (email, password, passwordConfirm, name, res) => {
     if (!email) {
       return res.status(400).json({
@@ -90,6 +91,7 @@ export class AuthService {
     };
   };
 
+  // 로그인
   userLogin = async (email, password, res) => {
     if (!email) {
       return res.status(400).json({
